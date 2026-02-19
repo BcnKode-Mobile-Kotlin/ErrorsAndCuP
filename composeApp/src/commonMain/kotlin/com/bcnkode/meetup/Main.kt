@@ -1,31 +1,37 @@
 package com.bcnkode.meetup
 
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import net.kodein.cup.Presentation
 import net.kodein.cup.Slides
 import net.kodein.cup.cupApplication
 import net.kodein.cup.laser.laser
 import net.kodein.cup.speaker.speakerWindow
-import net.kodein.cup.widgets.material3.cupScaleDown
 import org.kodein.emoji.compose.EmojiService
 
-fun main() = cupApplication(title = "Compose ur Pres - Tu presentación también compila") {
+fun main() = cupApplication(title = "Gestión de errors y slides en Kotlin") {
     remember {
         EmojiService.initialize()
     }
-    MaterialTheme(
-        colorScheme = darkColorScheme(),
-        typography = MaterialTheme.typography.cupScaleDown(),
-    ) {
-        Presentation(
-            slides = Slides(emptyList()),
-            configuration = {
-                laser()
-                speakerWindow()
-            }
-        ) { slidesContent ->
+    BcnKodeTheme {
+        SlidesPresentation()
+    }
+}
+
+@Composable
+fun SlidesPresentation() {
+    Presentation(
+        slides = Slides(emptyList()),
+        configuration = {
+            laser()
+            speakerWindow()
+        },
+        backgroundColor = MaterialTheme.colorScheme.background,
+    ) { slidesContent ->
+        CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onBackground) {
             slidesContent()
         }
     }
