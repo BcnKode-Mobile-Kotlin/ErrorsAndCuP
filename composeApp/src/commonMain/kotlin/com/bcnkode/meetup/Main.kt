@@ -5,6 +5,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import com.bcnkode.meetup.cup.introCuP
+import com.bcnkode.meetup.cup.whatAndWhy
 import net.kodein.cup.Presentation
 import net.kodein.cup.Slides
 import net.kodein.cup.cupApplication
@@ -24,7 +26,7 @@ fun main() = cupApplication(title = "Gestión de errors y slides en Kotlin") {
 @Composable
 fun SlidesPresentation() {
     Presentation(
-        slides = Slides(emptyList()),
+        slides = slides,
         configuration = {
             laser()
             speakerWindow()
@@ -36,3 +38,8 @@ fun SlidesPresentation() {
         }
     }
 }
+
+val slides = Slides(
+    introCuP,
+    whatAndWhy,
+)
