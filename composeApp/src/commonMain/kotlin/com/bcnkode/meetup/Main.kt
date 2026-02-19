@@ -1,4 +1,4 @@
-package com.bcnkode.meetup.cup
+package com.bcnkode.meetup
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
