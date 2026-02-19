@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=meetup_cup
+PRODUCT_BUNDLE_IDENTIFIER=com.bcnkode.meetup.cup.meetup_cup.meetup_cup$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
