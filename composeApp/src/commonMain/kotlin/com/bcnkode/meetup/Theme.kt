@@ -86,7 +86,7 @@ private val typography: Typography
         bodyLarge = TextStyle(
             fontFamily = montserratFontFamily,
             fontWeight = FontWeight.Normal,
-            fontSize = 14.sp,
+            fontSize = 12.sp,
         ),
     )
 
