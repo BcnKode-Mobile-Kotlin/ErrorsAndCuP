@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import com.bcnkode.meetup.cup.configuration
 import com.bcnkode.meetup.cup.introCuP
 import com.bcnkode.meetup.cup.whatAndWhy
 import net.kodein.cup.Presentation
@@ -42,4 +43,5 @@ fun SlidesPresentation() {
 val slides = Slides(
     introCuP,
     whatAndWhy,
+    configuration
 )

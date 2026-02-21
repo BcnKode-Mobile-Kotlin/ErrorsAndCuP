@@ -23,7 +23,7 @@ fun SlideScaffold(
         verticalArrangement = Arrangement.spacedBy(4.dp),
         modifier = Modifier
             .fillMaxSize()
-            .padding(Sizes.screenSidePadding)
+            .padding(vertical = Sizes.screenSidePadding, horizontal = 8.dp)
     ) {
         Text(
             text = title,
