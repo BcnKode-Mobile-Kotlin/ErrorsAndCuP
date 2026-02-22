@@ -5,6 +5,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -30,6 +31,7 @@ import meetup_cup.composeapp.generated.resources.Montserrat_SemiBoldItalic
 import meetup_cup.composeapp.generated.resources.Montserrat_Thin
 import meetup_cup.composeapp.generated.resources.Montserrat_ThinItalic
 import meetup_cup.composeapp.generated.resources.Res
+import net.kodein.cup.ui.SpanStyleSheet
 import org.jetbrains.compose.resources.Font
 
 @Composable
@@ -41,12 +43,23 @@ fun BcnKodeTheme(
             background = Color(0xFF141530),
             onBackground = Color.White,
             primary = Color.White,
+            onPrimary = Color.White,
             secondary = Color(0xFFD9D9D9),
+            primaryContainer = Color(0xFF242545)
         ),
         typography = typography,
     ) {
         content()
     }
+}
+
+object MyStyleSheet : SpanStyleSheet() {
+    val code by registerMarker(
+        SpanStyle(
+            fontFamily = FontFamily.Monospace,
+            background = Color(0xFF545580),
+        )
+    )
 }
 
 private val montserratFontFamily: FontFamily
@@ -88,8 +101,17 @@ private val typography: Typography
             fontWeight = FontWeight.Normal,
             fontSize = 12.sp,
         ),
+        bodyMedium = TextStyle(
+            fontFamily = montserratFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = 10.sp,
+        ),
     )
 
 object Sizes {
     val screenSidePadding = 16.dp
+    val titleToContent = 12.dp
+    val smallItemSpacing = 4.dp
+    val panesSeparation = 12.dp
+    val roundedCorners = 16.dp
 }
