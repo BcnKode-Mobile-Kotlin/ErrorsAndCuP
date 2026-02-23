@@ -29,8 +29,8 @@ val applicationCuP by Slide(
     ),
 ) { step ->
     val sourceCode = rememberSourceCode(language = "Kotlin") {
-        val theme by marker(onlyShown(1..2)) // Apareix al pas 2
-        val indent by marker(onlyShown(1..2)) // Els espais extra també apareixen al pas 2
+        val theme by marker(onlyShown(1..2))
+        val indent by marker(onlyShown(1..2))
         val bold by marker(highlighted(2))
         val i = "${indent}    ${X}"
 

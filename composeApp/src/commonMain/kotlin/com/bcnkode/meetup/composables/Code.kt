@@ -18,9 +18,14 @@ import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
 
 @Composable
-fun Code(code: SourceCode, modifier: Modifier = Modifier.padding(16.dp)) {
+fun Code(
+    code: SourceCode,
+    modifier: Modifier = Modifier.padding(16.dp),
+    step: Int = 0,
+) {
     SourceCode(
         code,
+        step = step,
         modifier = modifier,
         style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
         theme = SourceCodeThemes.darcula,
@@ -28,9 +33,13 @@ fun Code(code: SourceCode, modifier: Modifier = Modifier.padding(16.dp)) {
 }
 
 @Composable
-fun CodeInPane(code: SourceCode, modifier: Modifier = Modifier) {
+fun CodeInPane(
+    code: SourceCode,
+    modifier: Modifier = Modifier,
+    step: Int = 0,
+) {
     Pane(modifier = modifier) {
-        Code(code)
+        Code(code = code, step = step)
     }
 }
 
