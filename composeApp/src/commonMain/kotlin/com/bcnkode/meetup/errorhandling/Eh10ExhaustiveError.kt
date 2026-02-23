@@ -19,9 +19,9 @@ import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.MyStyleSheet
 import com.bcnkode.meetup.MyStyleSheet.code
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.layouts.TwoPanes
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -70,16 +70,11 @@ when (result.error) {
     ) {
         Column(Modifier.fillMaxSize()) {
             Spacer(Modifier.weight(1f))
-            Text("Using enums and sealed hierarchies lets us be exhaustive")
-            Spacer(Modifier.height(8.dp))
-            Pane(Modifier.align(Alignment.CenterHorizontally)) {
-                SourceCode(
-                    handlingCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
+            CodeInPaneWithTitle(
+                "Using enums and sealed hierarchies lets us be exhaustive",
+                handlingCode,
+                Modifier.align(Alignment.CenterHorizontally)
+            )
             Spacer(Modifier.weight(1f))
         }
     }

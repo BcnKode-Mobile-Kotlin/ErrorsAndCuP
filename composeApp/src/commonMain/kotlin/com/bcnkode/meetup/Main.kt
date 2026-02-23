@@ -11,6 +11,7 @@ import com.bcnkode.meetup.cup.advantagesCuP
 import com.bcnkode.meetup.cup.applicationCuP
 import com.bcnkode.meetup.cup.configurationCuP
 import com.bcnkode.meetup.cup.slidesCuP
+import androidx.compose.ui.graphics.Color
 import com.bcnkode.meetup.cup.introCuP
 import com.bcnkode.meetup.cup.slidesIndexCuP
 import com.bcnkode.meetup.cup.whatIsCuP
@@ -23,11 +24,16 @@ import com.bcnkode.meetup.errorhandling.indexErrorHandling
 import com.bcnkode.meetup.errorhandling.introErrorHandling
 import com.bcnkode.meetup.errorhandling.issuesOfCheckedErrorHandling
 import com.bcnkode.meetup.errorhandling.kotlinResultErrorHandling
+import com.bcnkode.meetup.errorhandling.logicOrExceptionsErrorHandling
 import com.bcnkode.meetup.errorhandling.myResultErrorHandling
 import com.bcnkode.meetup.errorhandling.needForRaiseErrorHandling
 import com.bcnkode.meetup.errorhandling.performanceErrorHandling
 import com.bcnkode.meetup.errorhandling.railwayOrientedErrorHandling
+import com.bcnkode.meetup.errorhandling.raiseContextParametersErrorHandling
+import com.bcnkode.meetup.errorhandling.unionTypesErrorHandling
 import net.kodein.cup.Presentation
+import net.kodein.cup.SLIDE_SIZE_16_9
+import net.kodein.cup.SlideSpecs
 import net.kodein.cup.Slides
 import net.kodein.cup.cupApplication
 import net.kodein.cup.laser.laser
@@ -50,8 +56,13 @@ fun SlidesPresentation() {
         configuration = {
             laser()
             speakerWindow()
+
+            /*defaultSlideSpecs = SlideSpecs(
+                size = SLIDE_SIZE_16_9,
+
+            )*/
         },
-        backgroundColor = MaterialTheme.colorScheme.background,
+        backgroundColor = Color.Black,
     ) { slidesContent ->
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onBackground) {
             slidesContent()
@@ -71,8 +82,11 @@ val errorHandlingSlides = Slides(
     myResultErrorHandling,
     exhaustiveErrorErrorHandling,
     errorModelsErrorHandling,
+    logicOrExceptionsErrorHandling,
     railwayOrientedErrorHandling,
     needForRaiseErrorHandling,
+    raiseContextParametersErrorHandling,
+    unionTypesErrorHandling,
 )
 
 val slides = Slides(

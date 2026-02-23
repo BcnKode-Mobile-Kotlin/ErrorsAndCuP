@@ -24,8 +24,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import meetup_cup.composeapp.generated.resources.Res
 import meetup_cup.composeapp.generated.resources.eh_railways_1
 import meetup_cup.composeapp.generated.resources.eh_railways_2
@@ -116,29 +116,19 @@ private fun Content3(exceptionsCode: SourceCode, myResultCode: SourceCode) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(0.55f)) {
-            Text("Exceptions example", style = MaterialTheme.typography.bodyMedium)
-            Spacer(Modifier.height(8.dp))
-            Pane(Modifier.fillMaxWidth()) {
-                SourceCode(
-                    exceptionsCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
+            CodeInPaneWithTitle(
+                "Exceptions example",
+                exceptionsCode,
+                Modifier.fillMaxWidth()
+            )
         }
         Spacer(Modifier.width(Sizes.panesSeparation))
         Column(Modifier.weight(0.45f)) {
-            Text("MyResult example", style = MaterialTheme.typography.bodyMedium)
-            Spacer(Modifier.height(8.dp))
-            Pane(Modifier.fillMaxWidth()) {
-                SourceCode(
-                    myResultCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
+            CodeInPaneWithTitle(
+                "MyResult example",
+                myResultCode,
+                Modifier.fillMaxWidth()
+            )
         }
     }
 }

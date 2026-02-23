@@ -1,3 +1,5 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
@@ -19,6 +21,18 @@ kotlin {
             implementation(libs.cup.speakerWindow)
             implementation(libs.cup.widgets.material3)
             implementation(libs.emoji.compose)
+        }
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.bcnkode.meetup.MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.bcnkode.meetup"
+            packageVersion = "1.0.0"
         }
     }
 }

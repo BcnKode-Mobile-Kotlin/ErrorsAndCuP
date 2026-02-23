@@ -1,17 +1,14 @@
 package com.bcnkode.meetup.errorhandling
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,13 +22,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.errorhandling.MyResultNested
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
-import meetup_cup.composeapp.generated.resources.Res
-import meetup_cup.composeapp.generated.resources.eh_railways_1
-import meetup_cup.composeapp.generated.resources.eh_railways_2
-import meetup_cup.composeapp.generated.resources.eh_railways_3
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -47,33 +39,40 @@ val needForRaiseErrorHandling by Slide(
             Con MyResult, tenemos un tipo que podemos pasar a un método para que se gestione
         """.trimIndent()
     ),
-    stepCount = 2,
+    stepCount = 3,
 ) { step ->
 
     val myResultCode = rememberSourceCode(language = "kotlin") {
             """
 userRepository.findById(userId)
-    .mapError { it.toUi() }
     .andThen { user ->
         productRepository.findById(productId)
-            .mapError { it.toUi() }
             .andThen { product ->
                 priceCalculator.calculate(user, product)
-                    .mapError { it.toUi() }
             }
-        }
+        }.mapError { it.toUi() }
 """.trimIndent()
         }
 
     val raiseCode = rememberSourceCode(language = "kotlin") {
         """
 myResult {
-    val user = userRepository.findById(userId)
-        .mapError { it.toUi() }.bind()
-    val product = productRepository.findById(productId)
-        .mapError { it.toUi() }.bind()
-    priceCalculator.calculate(user, product)
-        .mapError { it.toUi() }.bind()
+    val user = userRepository.findById(userId).bind()
+    val product = productRepository.findById(productId).bind()
+    priceCalculator.calculate(user, product).bind()
+}.mapError { it.toUi() }
+""".trimIndent()
+    }
+
+    val raiseUtilsCode = rememberSourceCode(language = "kotlin") {
+        """
+fun Raise<OrderError>.findById(userId: Int): User =
+    ensureNotNull(db.findById(userId)) { UserNotFound(userId) }
+    
+fun Raise<OrderError>.processPayment(order: Order) {
+    ensure(Buy in order.user.permissions) { NotBuyPermission }
+    if (order.price > balance) raise(OrderError.InsufficientFunds)
+    // calculate
 }
 """.trimIndent()
     }
@@ -84,39 +83,24 @@ myResult {
         contentAlignment = Alignment.Center,
     ) {
         when (step) {
-            0 -> MyResultNested(myResultCode)
-            1 -> RaiseSimpler(raiseCode)
+            0, 1 -> MyResultNested(myResultCode, raiseCode, showRaise = step == 1)
+            2 -> CodeInPaneWithTitle("Raise in internal functions", raiseUtilsCode)
         }
     }
 }
 
 @Composable
-private fun MyResultNested(myResultCode: SourceCode) {
-    Column {
-        Text("Nested calls with MyResult", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                myResultCode,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
-        }
-    }
-}
-@Composable
-private fun RaiseSimpler(raiseCode: SourceCode) {
-    Column {
-        Text("Flattened nested calls with Raise", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                raiseCode,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
+private fun MyResultNested(myResultCode: SourceCode, raiseCode: SourceCode, showRaise: Boolean) {
+    Column(
+        Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        CodeInPaneWithTitle("Nested calls with MyResult", myResultCode)
+        AnimatedVisibility(showRaise) {
+            Column {
+                Spacer(Modifier.height(16.dp))
+                CodeInPaneWithTitle("Flattened nested calls with Raise", raiseCode)
+            }
         }
     }
 }

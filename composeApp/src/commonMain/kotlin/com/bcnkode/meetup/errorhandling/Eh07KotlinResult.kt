@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.layouts.TwoPanes
+import com.bcnkode.meetup.composables.Code
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -57,7 +58,7 @@ class Result<out T>(val value: Any?) {
                     Spacer(Modifier.height(16.dp))
                     BulletPoints {
                         BulletPoint {
-                            Text("We cannot express errors as easily:\n- Limited types\n- Message as description")
+                            Text("We cannot express errors as easily:\n - Limited types\n - Message as description")
                         }
                         BulletPoint {
                             Text("Performance penalty")
@@ -70,10 +71,9 @@ class Result<out T>(val value: Any?) {
                     Modifier.padding(8.dp),
                     contentAlignment = Alignment.Center,
                 ) {
-                    SourceCode(
+                    Code(
                         resultCode,
-                        style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                        theme = SourceCodeThemes.darcula,
+                        modifier = Modifier,
                     )
                 }
             },
