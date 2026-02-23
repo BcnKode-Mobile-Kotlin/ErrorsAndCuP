@@ -5,11 +5,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import com.bcnkode.meetup.cup.advantagesCuP
 import com.bcnkode.meetup.cup.application
 import com.bcnkode.meetup.cup.configuration
 import com.bcnkode.meetup.cup.cupSlides
 import com.bcnkode.meetup.cup.introCuP
-import com.bcnkode.meetup.cup.whatAndWhy
+import com.bcnkode.meetup.cup.slidesIndexCuP
+import com.bcnkode.meetup.cup.whatIsCuP
 import com.bcnkode.meetup.errorhandling.arrowEitherErrorHandling
 import com.bcnkode.meetup.errorhandling.errorModelsErrorHandling
 import com.bcnkode.meetup.errorhandling.exhaustiveErrorErrorHandling
@@ -73,7 +75,9 @@ val errorHandlingSlides = Slides(
 
 val slides = Slides(
     introCuP,
-    whatAndWhy,
+    slidesIndexCuP,
+    whatIsCuP,
+    advantagesCuP,
     configuration,
     application,
     cupSlides,

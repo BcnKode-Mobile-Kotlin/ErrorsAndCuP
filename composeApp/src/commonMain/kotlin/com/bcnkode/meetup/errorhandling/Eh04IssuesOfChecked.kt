@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.bcnkode.meetup.MyStyleSheet
 import com.bcnkode.meetup.SlideScaffold
+import com.bcnkode.meetup.components.HighlightableBullet
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.layouts.TwoPanes
 import net.kodein.cup.Slide
@@ -72,20 +73,6 @@ val issuesOfCheckedErrorHandling by Slide(
                     }
                 }
             },
-        )
-    }
-}
-
-private fun BulletPointsBuilder.HighlightableBullet(text: String, isHighlighted: Boolean) {
-    BulletPoint {
-        Text(
-            text,
-            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = if (isHighlighted) 1f else 0.7f),
-            modifier = Modifier.graphicsLayer(
-                scaleX = if (isHighlighted) 1.1f else 1f,
-                scaleY = if (isHighlighted) 1.1f else 1f,
-                transformOrigin = TransformOrigin(0f, 0.5f),
-            ),
         )
     }
 }
