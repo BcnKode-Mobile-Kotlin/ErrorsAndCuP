@@ -23,7 +23,7 @@ import net.kodein.cup.sa.SourceCodeThemes
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.widgets.material3.BulletPoints
 
-val animatedContentSlide by Slide(
+val animatedContentCuP by Slide(
     stepCount = 5
 ) { step ->
     val sourceCode = rememberSourceCode(language = "kotlin") {

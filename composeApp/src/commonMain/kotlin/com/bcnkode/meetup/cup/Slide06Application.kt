@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,18 +12,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bcnkode.meetup.SlideScaffold
 import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
-import net.kodein.cup.PreparedSlide
-import net.kodein.cup.PreparedSlideScope.slideContent
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
 
-val application by Slide(
+val applicationCuP by Slide(
     stepCount = 3,
     user = SpeakerNotes(
         """
