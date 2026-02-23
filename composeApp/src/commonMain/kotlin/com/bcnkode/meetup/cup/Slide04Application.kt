@@ -16,7 +16,7 @@ import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
 
 val application by PreparedSlide(
-    stepCount = 3,
+    stepCount = 4,
     user = SpeakerNotes(
         """
             
@@ -25,7 +25,8 @@ val application by PreparedSlide(
 ) {
     val sourceCode = rememberSourceCode(language = "Kotlin") {
         val presentation by marker(onlyShown(1))
-        val theme by marker(onlyShown(2))
+        val theme by marker(onlyShown(2..3))
+        val bold by marker(highlighted(3))
         """
             fun main() = cupApplication(title = "My presentation") {
             ${presentation}    Presentation(
@@ -35,7 +36,7 @@ val application by PreparedSlide(
                 ) { slidesContent ->
                     slidesContent()
                 }${X}
-            ${theme}    MyTheme {
+            ${theme}    ${bold}MyTheme {${X}
                     Presentation(
                         slides = Slides(slide1, slide2),
                         configuration = {},
@@ -43,14 +44,12 @@ val application by PreparedSlide(
                     ) { slidesContent ->
                         slidesContent()
                     }
-                }${X}
+                ${bold}}${X}${X}
             }
         """.trimIndent()
     }
     slideContent { step ->
-        SlideScaffold(
-            title = "Iniciar presentación"
-        ) {
+        SlideScaffold(title = "Iniciar presentación") {
             Column {
                 Text(
                     text = "commonMain/my/package/Main.kt",
