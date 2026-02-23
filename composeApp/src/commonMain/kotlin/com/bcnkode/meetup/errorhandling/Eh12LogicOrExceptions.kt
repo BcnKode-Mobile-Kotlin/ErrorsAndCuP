@@ -14,7 +14,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.MyStyleSheet
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode

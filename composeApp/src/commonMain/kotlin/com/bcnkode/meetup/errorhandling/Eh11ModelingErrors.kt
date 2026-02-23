@@ -11,8 +11,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -89,25 +89,18 @@ fun GenericApiError.toBasicUi() =
     ) {
         Column(Modifier.fillMaxSize()) {
             Spacer(Modifier.weight(1f))
-            Pane(Modifier.align(Alignment.CenterHorizontally)) {
-                SourceCode(
-                    handlingCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
+            CodeInPaneWithTitle(
+                "API layer errors",
+                handlingCode,
+                Modifier.align(Alignment.CenterHorizontally)
+            )
             Spacer(Modifier.height(8.dp))
-            Pane(Modifier.align(Alignment.CenterHorizontally)) {
-                SourceCode(
-                    mappingCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
+            CodeInPaneWithTitle(
+                "UI layer errors & mapping",
+                mappingCode,
+                Modifier.align(Alignment.CenterHorizontally)
+            )
             Spacer(Modifier.weight(1f))
         }
     }
 }
-// TODO afegir logic errors vs exceptions

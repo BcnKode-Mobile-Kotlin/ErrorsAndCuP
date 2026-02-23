@@ -22,8 +22,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -84,7 +84,7 @@ fun Raise<OrderError>.processPayment(order: Order) {
     ) {
         when (step) {
             0, 1 -> MyResultNested(myResultCode, raiseCode, showRaise = step == 1)
-            2 -> RaiseOther(raiseUtilsCode)
+            2 -> CodeInPaneWithTitle("Raise in internal functions", raiseUtilsCode)
         }
     }
 }
@@ -95,48 +95,12 @@ private fun MyResultNested(myResultCode: SourceCode, raiseCode: SourceCode, show
         Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column {
-            Text("Nested calls with MyResult", style = MaterialTheme.typography.bodyMedium)
-            Spacer(Modifier.height(8.dp))
-            Pane {
-                SourceCode(
-                    myResultCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
-        }
+        CodeInPaneWithTitle("Nested calls with MyResult", myResultCode)
         AnimatedVisibility(showRaise) {
             Column {
                 Spacer(Modifier.height(16.dp))
-                Text("Flattened nested calls with Raise", style = MaterialTheme.typography.bodyMedium)
-                Spacer(Modifier.height(8.dp))
-                Pane {
-                    SourceCode(
-                        raiseCode,
-                        modifier = Modifier.padding(16.dp),
-                        style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                        theme = SourceCodeThemes.darcula,
-                    )
-                }
+                CodeInPaneWithTitle("Flattened nested calls with Raise", raiseCode)
             }
-        }
-    }
-}
-
-@Composable
-private fun RaiseOther(raiseUtilsCode: SourceCode) {
-    Column {
-        Text("Raise in internal functions", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                raiseUtilsCode,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
         }
     }
 }

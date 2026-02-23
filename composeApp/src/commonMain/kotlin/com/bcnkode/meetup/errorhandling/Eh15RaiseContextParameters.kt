@@ -20,8 +20,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -87,57 +87,9 @@ fun Raise<OrderError>.processPayment(order: Order) {
         contentAlignment = Alignment.Center,
     ) {
         when (step) {
-            0 -> RaiseIssue(raiseUtilsCode)
-            1 -> ContextParameters(contextParameters)
-            2 -> RaiseWithContext(raiseWithContextsCode)
-        }
-    }
-}
-
-@Composable
-private fun RaiseIssue(code: SourceCode) {
-    Column {
-        Text("What about multiple errors?", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                code,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
-        }
-    }
-}
-
-@Composable
-private fun ContextParameters(code: SourceCode) {
-    Column {
-        Text("New Kotlin feature: Context Parameters (experimental)", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                code,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
-        }
-    }
-}
-
-@Composable
-private fun RaiseWithContext(raiseCode: SourceCode) {
-    Column {
-        Text("We can declare multiple error types!", style = MaterialTheme.typography.bodyMedium)
-        Spacer(Modifier.height(8.dp))
-        Pane {
-            SourceCode(
-                raiseCode,
-                modifier = Modifier.padding(16.dp),
-                style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                theme = SourceCodeThemes.darcula,
-            )
+            0 -> CodeInPaneWithTitle("What about multiple errors?", raiseUtilsCode)
+            1 -> CodeInPaneWithTitle("New Kotlin feature: Context Parameters (experimental)", contextParameters)
+            2 -> CodeInPaneWithTitle("We can declare multiple error types!", raiseWithContextsCode)
         }
     }
 }

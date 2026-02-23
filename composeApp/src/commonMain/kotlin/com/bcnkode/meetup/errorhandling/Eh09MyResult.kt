@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.MyStyleSheet
 import com.bcnkode.meetup.MyStyleSheet.code
 import com.bcnkode.meetup.Sizes
-import com.bcnkode.meetup.layouts.Pane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.layouts.TwoPanes
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
@@ -81,21 +81,16 @@ inline fun <V, E, F> MyResult<V, E>.mapError(
     ) {
         Column(Modifier.fillMaxSize()) {
             Spacer(Modifier.weight(1f))
-            Text("Like Either, but better naming*")
+            CodeInPaneWithTitle(
+                "Like Either, but better naming*",
+                resultCode,
+                Modifier.align(Alignment.CenterHorizontally)
+            )
             Spacer(Modifier.weight(1f))
             Text(
                 styled(MyStyleSheet) { "* Prefix ${+code}My${-code} is because we cannot remove ${+code}kotlin.Result${-code} from autoimport" },
                 style = MaterialTheme.typography.bodyMedium
             )
-            Spacer(Modifier.weight(2f))
-            Pane(Modifier.align(Alignment.CenterHorizontally)) {
-                SourceCode(
-                    resultCode,
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 8.sp),
-                    theme = SourceCodeThemes.darcula,
-                )
-            }
             Spacer(Modifier.weight(1f))
         }
     }

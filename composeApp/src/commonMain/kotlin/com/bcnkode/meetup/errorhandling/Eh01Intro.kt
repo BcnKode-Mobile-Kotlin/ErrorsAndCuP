@@ -1,6 +1,7 @@
 package com.bcnkode.meetup.errorhandling
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,7 +32,8 @@ val introErrorHandling by Slide(
     )
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(Sizes.screenSidePadding),
+        modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background)
+            .padding(Sizes.screenSidePadding),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(36.dp),
     ) {
