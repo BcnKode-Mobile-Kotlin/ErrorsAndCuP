@@ -9,20 +9,15 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.composables.CodeInPaneWithTitle
@@ -32,7 +27,6 @@ import meetup_cup.composeapp.generated.resources.eh_railways_2
 import meetup_cup.composeapp.generated.resources.eh_railways_3
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
-import net.kodein.cup.sa.SourceCodeThemes
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
 import org.jetbrains.compose.resources.DrawableResource
@@ -78,7 +72,7 @@ validate(order)
     ) {
 
         when (step) {
-            0 -> MyResultNested()
+            0 -> RaiseUnnesting()
             1 -> ExceptionsNested()
             2 -> RaiseSimpler()
             3 -> Content3(exceptionsCode, myResultCode)
@@ -88,10 +82,10 @@ validate(order)
 }
 
 @Composable
-private fun MyResultNested() {
+private fun RaiseUnnesting() {
     Column(Modifier.fillMaxSize()) {
         Spacer(Modifier.weight(1f))
-        Text("Introduced by Scott Wlaschin in 2014: https://fsharpforfunandprofit.com/rop/")
+        Text("Introduced by Scott Wlaschin in 2014\n\nhttps://fsharpforfunandprofit.com/rop/")
         Spacer(Modifier.weight(1f))
         Image(Res.drawable.eh_railways_1)
         Spacer(Modifier.weight(1f))

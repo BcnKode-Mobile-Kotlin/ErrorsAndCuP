@@ -58,10 +58,7 @@ val errorModelsErrorHandling by Slide(
         """
 sealed interface ApiError<out E>
 enum class GenericApiError : ApiError<Nothing> {
-    NoInternet,
-    Network,
-    Server,
-    Unknown,
+    NoInternet, Network, Server, Unknown,
 }
 data class ControlledApiError<T>(val error: T) : ApiError<T>
 """.trimIndent()

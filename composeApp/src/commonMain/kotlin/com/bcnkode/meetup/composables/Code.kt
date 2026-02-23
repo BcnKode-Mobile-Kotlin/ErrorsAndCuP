@@ -18,7 +18,7 @@ import net.kodein.cup.sa.SourceCode
 import net.kodein.cup.sa.SourceCodeThemes
 
 @Composable
-fun Code(code: SourceCode, modifier: Modifier = Modifier.padding(16.dp)) {
+fun Code(code: SourceCode, modifier: Modifier = Modifier.padding(12.dp)) {
     SourceCode(
         code,
         modifier = modifier,
