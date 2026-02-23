@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bcnkode.meetup.composables.CodeInPane
+import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
@@ -59,13 +60,34 @@ val styleCuP by Slide(
             Spacer(Modifier.height(16.dp))
             AnimatedVisibility(step >= 2) {
                 Column {
-                    Text(text = "Jetpack compose style:")
-                    Spacer(Modifier.height(8.dp))
-                    CodeInPane(code = jetpackComposeStyleCode)
+                    CodeInPaneWithTitle(
+                        title = "Jetpack compose style:",
+                        code = jetpackComposeStyleCode,
+                    )
                 }
             }
             Spacer(Modifier.height(16.dp))
             AnimatedVisibility(step >= 3) {
+                Row(verticalAlignment = Alignment.Bottom) {
+                    Column {
+                        CodeInPaneWithTitle(
+                            title = "CuP style",
+                            code = cupStyleCode,
+                        )
+                    }
+                    Spacer(Modifier.width(16.dp))
+                    AnimatedVisibility(
+                        visible = step >= 4,
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    ) {
+                        Column {
+                            Text(text = styled { "b = ${+b}bold${-b}" })
+                            Text(text = styled { "i = ${+i}italic${-i}" })
+                        }
+                    }
+                }
+                /*
                 Column {
                     Text(text = "CuP style:")
                     Spacer(Modifier.height(8.dp))
@@ -84,7 +106,7 @@ val styleCuP by Slide(
                             }
                         }
                     }
-                }
+                }*/
             }
         }
     }
