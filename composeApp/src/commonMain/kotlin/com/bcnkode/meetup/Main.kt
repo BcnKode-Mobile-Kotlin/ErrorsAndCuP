@@ -10,6 +10,19 @@ import com.bcnkode.meetup.cup.configuration
 import com.bcnkode.meetup.cup.cupSlides
 import com.bcnkode.meetup.cup.introCuP
 import com.bcnkode.meetup.cup.whatAndWhy
+import com.bcnkode.meetup.errorhandling.arrowEitherErrorHandling
+import com.bcnkode.meetup.errorhandling.errorModelsErrorHandling
+import com.bcnkode.meetup.errorhandling.exhaustiveErrorErrorHandling
+import com.bcnkode.meetup.errorhandling.explicitErrorsErrorHandling
+import com.bcnkode.meetup.errorhandling.goodOfCheckedErrorHandling
+import com.bcnkode.meetup.errorhandling.indexErrorHandling
+import com.bcnkode.meetup.errorhandling.introErrorHandling
+import com.bcnkode.meetup.errorhandling.issuesOfCheckedErrorHandling
+import com.bcnkode.meetup.errorhandling.kotlinResultErrorHandling
+import com.bcnkode.meetup.errorhandling.myResultErrorHandling
+import com.bcnkode.meetup.errorhandling.needForRaiseErrorHandling
+import com.bcnkode.meetup.errorhandling.performanceErrorHandling
+import com.bcnkode.meetup.errorhandling.railwayOrientedErrorHandling
 import net.kodein.cup.Presentation
 import net.kodein.cup.Slides
 import net.kodein.cup.cupApplication
@@ -29,7 +42,7 @@ fun main() = cupApplication(title = "Gestión de errors y slides en Kotlin") {
 @Composable
 fun SlidesPresentation() {
     Presentation(
-        slides = slides,
+        slides = presentationSlides,
         configuration = {
             laser()
             speakerWindow()
@@ -42,10 +55,31 @@ fun SlidesPresentation() {
     }
 }
 
+val errorHandlingSlides = Slides(
+    introErrorHandling,
+    indexErrorHandling,
+    goodOfCheckedErrorHandling,
+    issuesOfCheckedErrorHandling,
+    performanceErrorHandling,
+    explicitErrorsErrorHandling,
+    kotlinResultErrorHandling,
+    arrowEitherErrorHandling,
+    myResultErrorHandling,
+    exhaustiveErrorErrorHandling,
+    errorModelsErrorHandling,
+    railwayOrientedErrorHandling,
+    needForRaiseErrorHandling,
+)
+
 val slides = Slides(
     introCuP,
     whatAndWhy,
     configuration,
     application,
     cupSlides,
+)
+
+val presentationSlides = Slides(
+    errorHandlingSlides,
+    slides,
 )
