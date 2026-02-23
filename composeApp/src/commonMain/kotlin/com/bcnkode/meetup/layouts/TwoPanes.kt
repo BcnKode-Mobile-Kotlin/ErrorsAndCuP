@@ -17,6 +17,7 @@ fun TwoPanes(
     rightContent: @Composable () -> Unit,
     leftPercentage: Float = 0.4f,
     rightFillsHeight: Boolean = true,
+    showRightPaneBackground: Boolean = true,
 ) {
     Row(
         Modifier.fillMaxSize(),
@@ -26,11 +27,21 @@ fun TwoPanes(
             leftContent()
         }
         Spacer(Modifier.width(Sizes.panesSeparation))
-        Pane(
-            modifier = Modifier.weight(1 - leftPercentage).then(
-                if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier
-            ),
-            content = rightContent,
-        )
+        if (showRightPaneBackground) {
+            Pane(
+                modifier = Modifier.weight(1 - leftPercentage).then(
+                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier
+                ),
+                content = rightContent,
+            )
+        } else {
+            Box(
+                modifier = Modifier.weight(1 - leftPercentage).then(
+                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier
+                )
+            ) {
+                rightContent()
+            }
+        }
     }
 }

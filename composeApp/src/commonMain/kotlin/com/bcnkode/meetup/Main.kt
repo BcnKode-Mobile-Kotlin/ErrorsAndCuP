@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import animatedContentSlide
 import com.bcnkode.meetup.cup.advantagesCuP
 import com.bcnkode.meetup.cup.application
 import com.bcnkode.meetup.cup.configuration
@@ -81,6 +82,7 @@ val slides = Slides(
     configuration,
     application,
     cupSlides,
+    animatedContentSlide,
 )
 
 val presentationSlides = Slides(
