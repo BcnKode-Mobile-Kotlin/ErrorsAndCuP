@@ -1,5 +1,6 @@
 package com.bcnkode.meetup.layouts
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +25,8 @@ fun TitleAndContentScaffold(
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(Sizes.smallItemSpacing),
-        modifier = Modifier.fillMaxSize().padding(vertical = Sizes.screenSidePadding),
+        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+            .padding(vertical = Sizes.screenSidePadding),
     ) {
         Text(
             text = title,

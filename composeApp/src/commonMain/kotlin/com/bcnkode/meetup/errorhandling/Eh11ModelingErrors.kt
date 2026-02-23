@@ -110,3 +110,4 @@ fun GenericApiError.toBasicUi() =
         }
     }
 }
+// TODO afegir logic errors vs exceptions
