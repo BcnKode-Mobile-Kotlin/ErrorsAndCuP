@@ -26,6 +26,7 @@ import com.bcnkode.meetup.cup.sourceCodeMarkersCuP
 import com.bcnkode.meetup.cup.transitionsCuP
 import com.bcnkode.meetup.cup.whatIsCuP
 import com.bcnkode.meetup.errorhandling.arrowEitherErrorHandling
+import com.bcnkode.meetup.errorhandling.conclusionErrorHandling
 import com.bcnkode.meetup.errorhandling.errorModelsErrorHandling
 import com.bcnkode.meetup.errorhandling.exhaustiveErrorErrorHandling
 import com.bcnkode.meetup.errorhandling.explicitErrorsErrorHandling
@@ -95,6 +96,7 @@ val errorHandlingSlides = Slides(
     needForRaiseErrorHandling,
     raiseContextParametersErrorHandling,
     unionTypesErrorHandling,
+    conclusionErrorHandling,
 )
 
 val slides = Slides(
