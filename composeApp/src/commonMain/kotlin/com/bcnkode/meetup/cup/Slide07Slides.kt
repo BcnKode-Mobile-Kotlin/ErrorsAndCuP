@@ -24,7 +24,28 @@ val slidesCuP by Slide(
     specs = SlideSpecs(),
     user = SpeakerNotes(
         """
+            (Paso 0) 1. La base mínima:
+            Declarar una diapositiva es tan fácil como crear una variable delegada con by Slide. En este punto más básico, 
+            solo necesitamos abrir el bloque para empezar a añadir contenido visual.
+
+            (Paso 1) 2. Configuración individual:
+            (Clic para revelar los parámetros)
+            Pero claro, a veces una diapositiva necesita algo más. Aquí le podemos pasar parámetros específicos:
             
+                - El stepCount nos dice cuántos clics tiene esta misma slide (como los que estamos haciendo ahora).
+                - Los SlideSpecs nos permiten sobrescribir configuraciones globales, como las transiciones de entrada y salida o el tamaño.
+                - Y el SpeakerNotes es donde escribo la "chuleta" que os estoy leyendo ahora mismo.
+
+            (Paso 2) 3. El Contenido:
+            (Clic para revelar SlideContent)
+            Dentro de las llaves es donde ocurre la magia de verdad. Aquí es donde llamamos a nuestros componentes de 
+            Jetpack Compose, nuestros Scaffolds, nuestras animaciones... el diseño que queramos que vea el público.
+
+            (Paso 3) 4. Sobrescribiendo el Tema:
+            (Clic para revelar MySecondTheme)
+            Y un truco interesante: si en una diapositiva concreta (por ejemplo, una pantalla de error o una demo) 
+            queréis romper con el tema global que vimos antes, podéis envolver el contenido en un segundo tema (
+            MySecondTheme) y ¡pum! Esta diapositiva será diferente al resto de la charla sin afectar a las demás.
         """.trimIndent()
     )
 ) { step ->

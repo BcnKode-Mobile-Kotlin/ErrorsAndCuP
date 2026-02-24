@@ -14,7 +14,20 @@ import net.kodein.cup.widgets.material3.BulletPoints
 val slidesIndexCuP by Slide(
     user = SpeakerNotes(
         """
-        
+        1. Qué es y por qué (What is and why): Empezaremos definiendo qué es exactamente Compose Ur Pres y, 
+        lo más importante, cuándo tiene sentido usarlo en lugar de un PowerPoint tradicional de toda la vida.
+
+        2. Configuración y App (Configuration & CuP application): Veremos rápidamente cómo se inicializa un proyecto y 
+        cuál es la estructura principal (el main) que levanta toda la presentación.
+
+        3. Diapositivas (Slides): Nos meteremos en el barro. Os enseñaré cómo creamos la interfaz visual de una 
+        diapositiva utilizando los mismos componentes de Jetpack Compose y las ventajas de la libreria.
+
+        4. Código fuente (Source code): La killer feature de esta herramienta. Aprenderemos a incrustar bloques de 
+        código y a animarlos paso a paso para que el público no se maree leyendo.
+
+        5. Plugins: Y para terminar, veremos esos superpoderes extra que nos da la comunidad, como esta misma pantalla 
+        de notas de orador que estoy leyendo yo ahora mismo, punteros láser o cómo exportarlo a PDF o Web
         """.trimIndent()
     )
 ) {
@@ -29,7 +42,7 @@ val slidesIndexCuP by Slide(
 
             BulletPoints {
                 BulletPoint {
-                    Text(text = "What is and avantages")
+                    Text(text = "What is and why")
                 }
                 BulletPoint {
                     Text(text = "Configuration")

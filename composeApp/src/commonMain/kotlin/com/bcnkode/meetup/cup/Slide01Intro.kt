@@ -26,7 +26,11 @@ import org.jetbrains.compose.resources.painterResource
 val introCuP by Slide(
     user = SpeakerNotes(
         """
-            
+            Ahora os hablaremos de Compose Ur Pres. Seguramente deduzcáis cómo se han hecho estás presentaciones según
+            el nombre de la siguiente charla.
+            Efectivamente, estas slides estan hechas en Kotlin puro y con Compose Multiplatform. Basicamente, si sabéis
+            utilizar Compose, sabréis hacer unas diapositivas espectaculares. Ahora vamos a ver como se puede montar todo
+            esto.
         """.trimIndent()
     )
 ) {
@@ -43,7 +47,7 @@ val introCuP by Slide(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = styled { "Compose Ur Pres\n${+b}¡Slides en Kotlin!${-b}" },
+                text = styled { "Compose Ur Pres\n${+b}¡Slides in Kotlin!${-b}" },
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.SemiBold,
             )

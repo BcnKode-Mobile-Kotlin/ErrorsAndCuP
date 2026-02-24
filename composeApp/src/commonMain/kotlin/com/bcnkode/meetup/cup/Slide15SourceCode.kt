@@ -1,20 +1,13 @@
 package com.bcnkode.meetup.cup
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.bcnkode.meetup.MyStyleSheet.code
 import com.bcnkode.meetup.composables.Code
-import com.bcnkode.meetup.composables.CodeInPane
 import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import net.kodein.cup.Slide
@@ -25,7 +18,22 @@ val sourceCodeCuP by Slide(
     stepCount = 2,
     user = SpeakerNotes(
         """
-            
+            (Paso 0) 1. El terror de pegar código:
+            Todos hemos estado ahí: tienes que enseñar código en Keynote, lo pegas, pierde el formato, el fondo se pone 
+            blanco, intentas hacer una captura de pantalla del IDE, luego la estiras y se ve pixelada... Es un desastre.
+
+            2. La receta nativa:
+            Aquí lo hacemos de forma nativa. Fijaos en el bloque de arriba: usamos rememberSourceCode y le pasamos 
+            nuestro código como un simple String multilínea de Kotlin. Luego le pasamos ese bloque a un componente 
+            SourceCode donde elegimos el tamaño y el tema, como el mítico Darcula.
+
+            (Paso 1) 3. El resultado final:
+            (Clic para revelar el Output)
+            Y este es el resultado. Un bloque de código con resaltado de sintaxis perfecto, renderizado vectorialmente 
+            (adiós píxeles borrosos), y totalmente integrado en nuestro ecosistema Compose.
+
+            4. Conclusión: Todo el código que habéis estado viendo hoy en esta charla está generado exactamente con este 
+            mismo componente. ¡Cero capturas de pantalla!
         """.trimIndent()
     )
 ) { step ->

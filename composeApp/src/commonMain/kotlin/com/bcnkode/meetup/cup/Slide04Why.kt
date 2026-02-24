@@ -29,13 +29,31 @@ import org.kodein.emoji.travel_places.sky_weather.Fire
 val advantagesCuP by Slide(
     user = SpeakerNotes(
         """
-            
+            1. Reutilización total de estilos: Aquí podemos importar directamente el sistema de diseño 
+            (Design System) de nuestra app. Si vuestra empresa tiene un tema propio en Jetpack Compose, lo inyectáis 
+            aquí y todas las slides heredan la identidad visual mágicamente.
+
+            2. Animaciones sin límites:
+            En una herramienta tradicional estás limitado al típico "fundido" o "deslizar". Aquí tenemos el motor de 
+            Jetpack Compose entero a nuestra disposición. Podéis usar AnimatedVisibility, físicas de rebote (springs), 
+            transiciones de estado... Si lo podéis imaginar e implementar en Android, lo podéis animar en vuestra 
+            presentación.
+
+            3. Exportación flexible:
+            Que esté hecho en código no significa que se quede en vuestro IDE. La presentación se puede compilar a web 
+            (Kotlin/Wasm o JS) para que cualquiera la vea desde su navegador mediante un link, o exportarse a un PDF 
+            estático súper limpio para enviarlo por correo después de la charla.
+
+            4. ¡Hot Reload!:
+            Y esto es el paraíso del desarrollador (fijaros en el logo de Compose en llamas). Podéis tener vuestra 
+            presentación corriendo en una ventana y el código en otra. Cambiáis un padding, un texto o un color, 
+            le dais a guardar y... ¡Pum! Se actualiza en directo en la diapositiva sin tener que recompilar ni reiniciar la presentación.
         """.trimIndent()
     ),
     stepCount = 4,
 ) { step ->
     TitleAndContentScaffold(
-        title = "Advantages",
+        title = "Why use it",
     ) {
         TwoPanes(
             leftContent = {

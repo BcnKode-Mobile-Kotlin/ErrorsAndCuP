@@ -24,7 +24,23 @@ val configurationCuP by Slide(
     stepCount = 2,
     user = SpeakerNotes(
         """
-            
+            (Paso 0) 1. La configuración mínima viable:
+            Como en cualquier proyecto moderno de Kotlin Multiplatform, todo empieza en nuestro querido build.gradle.kts. 
+            Fijaros en lo limpio que es:
+
+                - Aplicamos el plugin oficial de CuP.
+                - Declaramos nuestros targets: en este caso le decimos que queremos exportar a Escritorio (targetDesktop) y a Web (targetWeb).
+                - Y en nuestras dependencias comunes, simplemente añadimos Material 3 de Compose. ¡Con esto ya podríamos arrancar!
+
+            (Paso 1) 2. Vitaminando la presentación (Los Plugins):
+            (Clic para revelar el resto del código)
+            Pero no queremos una presentación básica, queremos magia. CuP es totalmente modular, así que aquí añadimos las librerías extra que vamos a necesitar.
+                
+                - laser: Para tener un puntero láser en pantalla.
+                - sourceCode: Que es, irónicamente, la librería que está pintando de colores este mismo bloque de código que estáis leyendo.
+                - speakerWindow: La que me permite tener esta chuleta con notas en mi otra pantalla.
+
+            Y utilidades extra como Emojis o Widgets. ¡Pones solo lo que necesitas y listo!
         """.trimIndent()
     ),
 ) { step ->

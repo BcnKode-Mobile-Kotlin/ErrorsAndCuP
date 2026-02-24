@@ -24,7 +24,24 @@ val applicationCuP by Slide(
     stepCount = 3,
     user = SpeakerNotes(
         """
-            
+            (Paso 0) 1. El clásico main():
+            Como cualquier app multiplataforma, todo empieza en commonMain con una función main(). Llamamos a 
+            cupApplication y dentro colocamos nuestro componente principal: Presentation.
+            Fijaos en el parámetro slides = Slides(slide1, slide2)... ¡Exacto! Es básicamente como un NavHost de 
+            Jetpack Compose, pero que en lugar de rutas, gestiona un array de pantallas en orden.
+
+            (Paso 1) 2. Inyectando nuestro diseño:
+            (Clic para revelar MyTheme)
+            Pero claro, decíamos que la gracia de esto es aprovechar el diseño de nuestra empresa. Si estuviéramos en 
+            PowerPoint, ahora tocaría editar el "Patrón de diapositivas". Aquí, simplemente envolvemos nuestra presentación 
+            en nuestro tema de Compose.
+            (Pausa breve para que el público aprecie cómo el código se ha indentado solo hacia la derecha de forma fluida).
+
+            (Paso 2) 3. Magia 100% Compose:
+            (Clic para resaltar MyTheme)
+            Y quiero destacar esto: este MyTheme { ... } que veis resaltado es exactamente el mismo tema 
+            (MaterialTheme, custom colors, tipografías) que usáis en vuestra app de Android en producción. 
+            La presentación hereda al instante todos los colores corporativos, tipografías y formas. Cero esfuerzo duplicado.
         """.trimIndent()
     ),
 ) { step ->

@@ -16,7 +16,22 @@ val transitionsCuP by Slide(
     stepCount = 2,
     user = SpeakerNotes(
         """
+           (Paso 0) 1. Sobrescribiendo el global:
+            Acabamos de ver cómo poner unas transiciones a toda la presentación. Pero, ¿y si llego a una diapositiva 
+            quiero que, solo esta vez, la pantalla entre deslizando desde abajo hacia arriba?
+            Muy fácil: cuando declaramos nuestra variable Slide, le pasamos sus propios SlideSpecs. Al hacer esto, 
+            CuP ignora la configuración global del main y aplica este TransitionSet.moveVertical exclusivamente a esta diapositiva.
             
+            (Paso 1) 2. Transiciones 100% Custom:
+            (Clic para revelar el código del TransitionSet)
+            Pero esperad, que hay más. No estamos limitados a los presets que nos da la librería 
+            (como fade o moveVertical o moveHorizontal). ¿Qué es realmente un TransitionSet por debajo?
+            ¡Es Jetpack Compose puro! Si creáis vuestro propio TransitionSet, le podéis pasar los bloques enter y exit. 
+            Dentro de ellos, podéis sumar animaciones nativas con el operador +, exactamente igual que hacéis en un 
+            AnimatedVisibility de Android: fadeIn() + slideIn().
+            
+            3. Conclusión: Si queréis que vuestra diapositiva entre haciendo un tirabuzón, escalando y cambiando de 
+            alfa a la vez... solo tenéis que sumar los modificadores. Control absoluto. 
         """.trimIndent()
     )
 ) { step ->

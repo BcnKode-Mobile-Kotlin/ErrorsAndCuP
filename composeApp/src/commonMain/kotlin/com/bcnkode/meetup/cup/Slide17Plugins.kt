@@ -13,9 +13,36 @@ import com.bcnkode.meetup.composables.CodeInPane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
+import net.kodein.cup.speaker.SpeakerNotes
 import net.kodein.cup.widgets.material3.BulletPoints
 
-val pluginsCuP by Slide {
+val pluginsCuP by Slide(
+    user = SpeakerNotes(
+        """
+            1. Una arquitectura modular:
+            Algo genial de CuP es que no te obliga a cargar código pesado si no lo vas a usar. Si quieres funcionalidades 
+            extra para el día de la charla, simplemente las añades como plugins en el bloque de configuración del main, 
+            como veis en el primer bloque de código. Hoy destacamos dos fundamentales.
+
+            2. El Puntero Láser (Laser):
+            (Si tienes el láser activado, muévelo por la pantalla ahora)
+            Al añadir la función laser(), habilitamos un puntero virtual que controlamos con el ratón. 
+            Es una tontería, pero si estás haciendo una charla en remoto por Zoom o Twitch, el público no ve tu mano 
+            señalando la pantalla. Con esto, guías su mirada perfectamente por el código.
+
+            3. La Pantalla de Ponente (Speaker Window):
+            Esta es la salvación de cualquier orador. Al añadir speakerWindow(), CuP nos levanta una segunda ventana 
+            (la que yo estoy mirando ahora mismo en mi portátil) con un cronómetro, la diapositiva actual, 
+            la siguiente y, lo más importante, mis notas privadas.
+
+            4. ¿Cómo escribimos las notas?:
+            (Señala el segundo bloque de código)
+            Y para meter esas notas privadas en esa segunda pantalla, es tan fácil como usar el parámetro 
+            user = SpeakerNote("...") al declarar la diapositiva. Literalmente, todo este rollo que os estoy soltando 
+            ahora mismo está escrito exactamente así en mi código fuente. ¡Es "Inception" de presentaciones!
+        """.trimIndent()
+    )
+) {
     val code = rememberSourceCode(language = "kotlin") {
         """
             fun main() = cupApplication {

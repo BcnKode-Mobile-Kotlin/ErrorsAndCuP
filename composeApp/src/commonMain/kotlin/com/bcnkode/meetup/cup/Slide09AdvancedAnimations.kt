@@ -54,7 +54,22 @@ val advancedAnimationsCuP by Slide(
     stepCount = 2,
     user = SpeakerNotes(
         """
-            
+            (Paso 0) 1. El problema de las imágenes estáticas:
+            ¿Cuántas veces habéis querido explicar el timeline de un proyecto y habéis acabado pegando una captura de 
+            pantalla horrible como esta? Es fea, no escala, no se lee bien y, sobre todo, no cuenta una historia visual.
+
+            (Paso 1) 2. De la imagen al Código (con IA):
+            (Clic para revelar la animación del gráfico)
+            Fijaos en esto. Lo que estáis viendo dibujarse en pantalla no es un vídeo incrustado. Es un componente 100% 
+            Jetpack Compose creado específicamente para esta diapositiva usando el Canvas de Compose y el estado Animatable.
+
+            3. La anécdota: El secreto de este gráfico es que le pasé la imagen anterior a una IA (Gemini/ChatGPT) y 
+            le pedí: "Escríbeme un layout en Compose que dibuje esto y que una variable de estado anime el ancho del 
+            +rectángulo a lo largo de 3 segundos". Lo pegué en mi archivo .kt y funcionó a la primera.
+
+            4. Conclusión: En una presentación normal, hacer que unas barras de progreso aparezcan suavemente 
+            sincronizadas con un eje temporal es un infierno. Aquí, usando un simple clipRect y matemáticas básicas 
+            dentro de un @Composable, hemos creado una infografía interactiva insuperable.
         """.trimIndent()
     )
 ) { step ->

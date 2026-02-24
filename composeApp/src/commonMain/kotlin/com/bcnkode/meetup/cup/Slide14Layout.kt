@@ -14,9 +14,32 @@ import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.layouts.TwoPanes
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
+import net.kodein.cup.speaker.SpeakerNotes
 import net.kodein.cup.widgets.material3.BulletPoints
 
-val layoutsCuP by Slide {
+val layoutsCuP by Slide(
+    user = SpeakerNotes(
+        """
+            1. El código (Mirando a la derecha):
+            Hasta ahora hemos visto cómo poner texto y animaciones, pero si en cada diapositiva tuviéramos que programar 
+            la cabecera, los márgenes y el logotipo... nos volveríamos locos. Para eso creamos componentes envolventes: 
+            los Scaffolds. Fijaos en el código, simplemente llamamos a MyScaffold, le pasamos el título y dentro escupimos 
+            el contenido.
+
+            2. Las ventajas reales (Mirando a la izquierda):
+            ¿Qué ganamos trabajando así?
+
+                - Consistencia visual: El título siempre está en el mismo píxel. No hay saltos raros al pasar de diapositiva.
+                - Cero Boilerplate: Me olvido de escribir Columns, Spacers y paddings de 16dp en cada maldito archivo.
+                - Gestión del espacio: El propio Scaffold calcula el área segura para que mi contenido nunca pise el título o el pie de página.
+                - Plantillas: Igual que en Keynote tienes "Diapositiva de Título" o "Dos Columnas", aquí te programas tus propios Scaffolds reutilizables.
+
+            3. El truco final: De hecho, ¡esta misma diapositiva que estáis viendo está usando un Scaffold! Todo este 
+            recuadro, el título superior y la división en dos paneles es un componente llamado TitleAndContentScaffold 
+            que he programado una sola vez y reutilizado en toda la charla.
+        """.trimIndent()
+    )
+) {
     val scaffoldCode = rememberSourceCode(language = "kotlin") {
         """
             val layoutSlide by Slide {

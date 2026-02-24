@@ -24,7 +24,17 @@ import org.jetbrains.compose.resources.painterResource
 val whatIsCuP by Slide(
     user = SpeakerNotes(
         """
-            
+            1. Como veis en pantalla, CuP es una herramienta que nos permite "declarar" nuestras presentaciones. 
+            Igual que declaramos la UI de una app, aquí declaramos diapositivas.
+
+            2. Los dos pilares (señalando los logos): Todo esto se apoya en dos tecnologías que ya conocemos:
+            Kotlin: Todo el tipado fuerte, funciones, colecciones y la elegancia del lenguaje están a nuestra disposición.
+            Compose: Utilizamos exactamente los mismos componentes (Row, Column, Text, Modifier) 
+            que usamos en nuestro día a día. ¡Curva de aprendizaje casi cero!
+
+            3. Lo más espectacular de que esté basado en Compose Multiplatform es que nuestra 
+            presentación es, literalmente, un software multiplataforma. La podemos compilar como aplicación de 
+            escritorio (Mac/Windows), exportarla a la Web para compartirla, o incluso presentarla desde una app de Android.
         """.trimIndent()
     ),
 ) {
