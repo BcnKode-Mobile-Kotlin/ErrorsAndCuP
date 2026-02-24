@@ -15,7 +15,7 @@ val slidesIndexCuP by Slide(
     user = SpeakerNotes(
         """
         1. Qué es y por qué (What is and why): Empezaremos definiendo qué es exactamente Compose Ur Pres y, 
-        lo más importante, cuándo tiene sentido usarlo en lugar de un PowerPoint tradicional de toda la vida.
+        lo más importante.
 
         2. Configuración y App (Configuration & CuP application): Veremos rápidamente cómo se inicializa un proyecto y 
         cuál es la estructura principal (el main) que levanta toda la presentación.
