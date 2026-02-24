@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.bcnkode.meetup.MyStyleSheet
 import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
+import com.bcnkode.meetup.utils.showIf
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
@@ -20,7 +21,7 @@ val unionTypesErrorHandling by Slide(
             
         """.trimIndent()
     ),
-    stepCount = 1,
+    stepCount = 2,
 ) { step ->
 
     val simpleUnionCode = rememberSourceCode(language = "kotlin") {
@@ -48,10 +49,12 @@ fun fetchUser(userId: Int): User | NoInternet | ServerError | UserNotFound
 
             Spacer(Modifier.height(24.dp))
 
-            CodeInPaneWithTitle(
-                styled(MyStyleSheet) { "It is not sealed, we can combine them, but only ${+code}Error${-code}s" },
-                longUnionCode,
-            )
+            Column(Modifier.showIf(step >= 1)) {
+                CodeInPaneWithTitle(
+                    styled(MyStyleSheet) { "It is not sealed, we can combine them, but only ${+code}Error${-code}s" },
+                    longUnionCode,
+                )
+            }
         }
     }
 }

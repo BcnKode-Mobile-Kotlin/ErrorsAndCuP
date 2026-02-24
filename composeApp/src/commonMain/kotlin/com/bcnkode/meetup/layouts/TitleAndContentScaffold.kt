@@ -49,7 +49,8 @@ fun TitleAndContentScaffold(
                 .weight(1f)
                 .fillMaxWidth()
                 .padding(top = Sizes.titleToContent)
-                .padding(horizontal = contentHorizontalPadding),
+                .padding(horizontal = contentHorizontalPadding)
+                .padding(bottom = Sizes.titleToContent),
         ) {
             content()
         }

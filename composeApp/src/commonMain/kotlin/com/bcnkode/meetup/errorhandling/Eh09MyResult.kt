@@ -52,12 +52,14 @@ val myResultErrorHandling by Slide(
             
         """.trimIndent()
     ),
-) {
+    stepCount = 3,
+) { step ->
     val resultCode = rememberSourceCode(language = "kotlin") {
+        val highlight by marker(highlighted(1))
         """
-sealed class MyResult<out V, out E>
-data class Success<out V>(val value: V) : MyResult<V, Nothing>()
-data class Failure<out E>(val error: E) : MyResult<Nothing, E>()
+sealed class ${highlight}MyResult${X}<out V, out E>
+data class ${highlight}Success${X}<out V>(val value: V) : MyResult<V, Nothing>()
+data class ${highlight}Failure${X}<out E>(val error: E) : MyResult<Nothing, E>()
 
 inline fun <V, E, U> MyResult<V, E>.map(
     transform: (V) -> U,
@@ -84,7 +86,8 @@ inline fun <V, E, F> MyResult<V, E>.mapError(
             CodeInPaneWithTitle(
                 "Like Either, but better naming*",
                 resultCode,
-                Modifier.align(Alignment.CenterHorizontally)
+                Modifier.align(Alignment.CenterHorizontally),
+                step = step,
             )
             Spacer(Modifier.weight(1f))
             Text(
