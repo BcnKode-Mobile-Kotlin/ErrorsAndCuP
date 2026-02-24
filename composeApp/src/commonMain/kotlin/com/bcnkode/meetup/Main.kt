@@ -42,6 +42,8 @@ import com.bcnkode.meetup.errorhandling.performanceErrorHandling
 import com.bcnkode.meetup.errorhandling.railwayOrientedErrorHandling
 import com.bcnkode.meetup.errorhandling.raiseContextParametersErrorHandling
 import com.bcnkode.meetup.errorhandling.unionTypesErrorHandling
+import com.bcnkode.meetup.genericslides.basetis
+import com.bcnkode.meetup.genericslides.thankYou
 import net.kodein.cup.Presentation
 import net.kodein.cup.Slides
 import net.kodein.cup.cupApplication
@@ -97,6 +99,7 @@ val errorHandlingSlides = Slides(
     raiseContextParametersErrorHandling,
     unionTypesErrorHandling,
     conclusionErrorHandling,
+    thankYou,
 )
 
 val slides = Slides(
@@ -118,10 +121,11 @@ val slides = Slides(
     sourceCodeMarkersCuP,
     pluginsCuP,
     conclusionsCuP,
-    finishCuP
+    finishCuP,
 )
 
 val presentationSlides = Slides(
+    Slides(basetis),
     errorHandlingSlides,
     slides,
 )

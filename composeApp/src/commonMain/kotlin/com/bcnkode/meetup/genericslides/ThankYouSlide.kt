@@ -1,11 +1,13 @@
-package com.bcnkode.meetup.errorhandling
+package com.bcnkode.meetup.genericslides
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -24,39 +26,31 @@ import net.kodein.cup.speaker.SpeakerNotes
 import net.kodein.cup.ui.styled
 import org.jetbrains.compose.resources.painterResource
 
-val introErrorHandling by Slide(
+val thankYou by Slide(
     user = SpeakerNotes(
         """
             
         """.trimIndent()
     )
 ) {
-    Row(
+    Column(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
             .padding(Sizes.screenSidePadding),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(36.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            Text(
-                text = styled { "Errors in Kotlin\n${+i}beyond try-catch${-i}" },
-                style = MaterialTheme.typography.displayLarge,
-                fontWeight = FontWeight.SemiBold,
-            )
-            Text(
-                text = "by BcnKode: Mobile & Kotlin",
-                style = MaterialTheme.typography.displayMedium,
-                fontWeight = FontWeight.Medium,
-            )
-        }
-        Image(
-            painter = painterResource(Res.drawable.eh_railway),
-            contentScale = ContentScale.FillWidth,
-            contentDescription = null,
-            modifier = Modifier.clip(CircleShape).weight(1f)
+        Spacer(Modifier.weight(5f))
+        Text(
+            text = "Thank you!",
+            style = MaterialTheme.typography.displayLarge,
+            fontWeight = FontWeight.SemiBold,
         )
+        Spacer(Modifier.weight(1f))
+        Text(
+            text = "Any questions?",
+            style = MaterialTheme.typography.displayMedium,
+            fontWeight = FontWeight.Medium,
+        )
+        Spacer(Modifier.weight(5f))
     }
 }
