@@ -28,8 +28,10 @@ val kotlinResultErrorHandling by Slide(
             
         """.trimIndent()
     ),
-) {
+    stepCount = 3,
+) { step ->
     val resultCode = rememberSourceCode(language = "kotlin") {
+        val failure by marker(highlighted(1))
         """
 class Result<out T>(val value: Any?) {
     companion object {
@@ -40,9 +42,9 @@ class Result<out T>(val value: Any?) {
             exception: Throwable,
         ): Result<T> = Result(Failure(exception))
     }
-    class Failure(
+${failure}    class Failure(
         val exception: Throwable
-    )
+    )${X}
 }
 """.trimIndent()
     }
@@ -74,6 +76,7 @@ class Result<out T>(val value: Any?) {
                     Code(
                         resultCode,
                         modifier = Modifier,
+                        step = step,
                     )
                 }
             },

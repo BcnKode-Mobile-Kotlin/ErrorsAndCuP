@@ -53,7 +53,8 @@ val errorModelsErrorHandling by Slide(
             UI does not care about all errors, so we map
         """.trimIndent()
     ),
-) {
+    stepCount = 2,
+) { step ->
     val handlingCode = rememberSourceCode(language = "kotlin") {
         """
 sealed interface ApiError<out E>
@@ -65,18 +66,19 @@ data class ControlledApiError<T>(val error: T) : ApiError<T>
     }
 
     val mappingCode = rememberSourceCode(language = "kotlin") {
+        val mapper by marker(onlyShown(1))
             """
 sealed interface UiDataError
 enum class UiGenericDataError : UiDataError { NoInternet, Generic }
 data class SpecificUiError<T>(val error: T) : UiDataError
 
-fun GenericApiError.toBasicUi() =
+${mapper}fun GenericApiError.toBasicUi() =
     when (this) {
         GenericApiError.NoInternet -> UiGenericDataError.NoInternet
         GenericApiError.Network, GenericApiError.Server, GenericApiError.Unknown -> {
             UiGenericDataError.Generic
         }
-    }
+    }${X}
 """.trimIndent()
         }
 
@@ -95,7 +97,8 @@ fun GenericApiError.toBasicUi() =
             CodeInPaneWithTitle(
                 "UI layer errors & mapping",
                 mappingCode,
-                Modifier.align(Alignment.CenterHorizontally)
+                Modifier.align(Alignment.CenterHorizontally),
+                step = step,
             )
             Spacer(Modifier.weight(1f))
         }
