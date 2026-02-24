@@ -1,12 +1,14 @@
 package com.bcnkode.meetup.cup
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.bcnkode.meetup.composables.Code
+import androidx.compose.ui.unit.dp
 import com.bcnkode.meetup.composables.CodeInPane
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import net.kodein.cup.Slide
@@ -26,6 +28,15 @@ val pluginsCuP by Slide {
             }
         """.trimIndent()
     }
+    val speakerNoteCode = rememberSourceCode(language = "kotlin") {
+        """
+            val slide by Slide(
+                user = SpeakerNote("My private note")
+            ) {
+                ...
+            »
+        """.trimIndent()
+    }
     TitleAndContentScaffold(
         title = "Plugins",
     ) {
@@ -41,7 +52,14 @@ val pluginsCuP by Slide {
                 }
             }
             Spacer(Modifier.weight(1f))
-            CodeInPane(code, modifier = Modifier.align(Alignment.CenterHorizontally))
+            Row(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                CodeInPane(code)
+                Spacer(Modifier.width(8.dp))
+                CodeInPane(speakerNoteCode)
+            }
             Spacer(Modifier.weight(1f))
         }
     }

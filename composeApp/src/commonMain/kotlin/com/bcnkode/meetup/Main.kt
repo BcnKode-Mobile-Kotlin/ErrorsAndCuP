@@ -12,7 +12,9 @@ import com.bcnkode.meetup.cup.applicationCuP
 import com.bcnkode.meetup.cup.configurationCuP
 import com.bcnkode.meetup.cup.slidesCuP
 import com.bcnkode.meetup.cup.animatedContentCuP
+import com.bcnkode.meetup.cup.conclusionsCuP
 import com.bcnkode.meetup.cup.customStyleCuP
+import com.bcnkode.meetup.cup.finishCuP
 import com.bcnkode.meetup.cup.introCuP
 import com.bcnkode.meetup.cup.pluginsCuP
 import com.bcnkode.meetup.cup.slidesIndexCuP
@@ -20,6 +22,7 @@ import com.bcnkode.meetup.cup.styleCuP
 import com.bcnkode.meetup.cup.genericTransitionsCuP
 import com.bcnkode.meetup.cup.layoutsCuP
 import com.bcnkode.meetup.cup.sourceCodeCuP
+import com.bcnkode.meetup.cup.sourceCodeMarkersCuP
 import com.bcnkode.meetup.cup.transitionsCuP
 import com.bcnkode.meetup.cup.whatIsCuP
 import com.bcnkode.meetup.errorhandling.arrowEitherErrorHandling
@@ -110,7 +113,10 @@ val slides = Slides(
     transitionsCuP,
     layoutsCuP,
     sourceCodeCuP,
+    sourceCodeMarkersCuP,
     pluginsCuP,
+    conclusionsCuP,
+    finishCuP
 )
 
 val presentationSlides = Slides(
