@@ -1,7 +1,7 @@
 package com.bcnkode.meetup.layouts
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,6 +23,7 @@ data class Bullet(
 fun BulletListDetail(
     bullets: List<Bullet>,
     step: Int,
+    leftPercentage: Float = 0.4f,
 ) {
     TwoPanes(
         leftContent = {
@@ -37,12 +38,14 @@ fun BulletListDetail(
         },
         rightContent = {
             Box(
-                Modifier.fillMaxSize().padding(16.dp),
+                Modifier.fillMaxWidth().padding(16.dp),
                 contentAlignment = Alignment.CenterStart,
             ) {
                 bullets.getOrNull(step)?.content?.invoke()
             }
         },
+        leftPercentage = leftPercentage,
+        rightFillsHeight = false,
     )
 }
 

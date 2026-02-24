@@ -1,5 +1,7 @@
 package com.bcnkode.meetup.layouts
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,14 +32,14 @@ fun TwoPanes(
         if (showRightPaneBackground) {
             Pane(
                 modifier = Modifier.weight(1 - leftPercentage).then(
-                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier
+                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier.animateContentSize()
                 ),
                 content = rightContent,
             )
         } else {
             Box(
                 modifier = Modifier.weight(1 - leftPercentage).then(
-                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier
+                    if (rightFillsHeight) Modifier.fillMaxHeight() else Modifier.animateContentSize()
                 )
             ) {
                 rightContent()

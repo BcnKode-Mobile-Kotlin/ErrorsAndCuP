@@ -1,32 +1,27 @@
 package com.bcnkode.meetup.errorhandling
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bcnkode.meetup.Sizes
 import com.bcnkode.meetup.layouts.TitleAndContentScaffold
 import com.bcnkode.meetup.composables.CodeInPaneWithTitle
 import net.kodein.cup.Slide
 import net.kodein.cup.sa.SourceCode
-import net.kodein.cup.sa.SourceCodeThemes
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
 import org.jetbrains.compose.resources.DrawableResource
@@ -83,18 +78,17 @@ fun Raise<OrderError>.processPayment(order: Order) {
         contentAlignment = Alignment.Center,
     ) {
         when (step) {
-            0, 1 -> MyResultNested(myResultCode, raiseCode, showRaise = step == 1)
-            2 -> CodeInPaneWithTitle("Raise in internal functions", raiseUtilsCode)
+            0, 1 -> RaiseUnnesting(myResultCode, raiseCode, showRaise = step == 1)
+            2 -> Column {
+                CodeInPaneWithTitle("Raise in internal functions", raiseUtilsCode)
+            }
         }
     }
 }
 
 @Composable
-private fun MyResultNested(myResultCode: SourceCode, raiseCode: SourceCode, showRaise: Boolean) {
-    Column(
-        Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
+private fun RaiseUnnesting(myResultCode: SourceCode, raiseCode: SourceCode, showRaise: Boolean) {
+    Column(Modifier.animateContentSize(animationSpec = spring(stiffness = Spring.StiffnessMedium))) {
         CodeInPaneWithTitle("Nested calls with MyResult", myResultCode)
         AnimatedVisibility(showRaise) {
             Column {

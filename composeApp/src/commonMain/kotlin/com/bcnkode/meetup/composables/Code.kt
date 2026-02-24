@@ -20,7 +20,7 @@ import net.kodein.cup.sa.SourceCodeThemes
 @Composable
 fun Code(
     code: SourceCode,
-    modifier: Modifier = Modifier.padding(16.dp),
+    modifier: Modifier = Modifier.padding(12.dp),
     step: Int = 0,
 ) {
     SourceCode(
