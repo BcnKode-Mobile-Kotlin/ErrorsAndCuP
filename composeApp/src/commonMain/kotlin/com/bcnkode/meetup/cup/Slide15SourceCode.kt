@@ -1,5 +1,6 @@
 package com.bcnkode.meetup.cup
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -15,7 +16,7 @@ import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.cup.speaker.SpeakerNotes
 
 val sourceCodeCuP by Slide(
-    stepCount = 2,
+    stepCount = 3,
     user = SpeakerNotes(
         """
             (Paso 0) 1. El terror de pegar código:
@@ -68,15 +69,17 @@ val sourceCodeCuP by Slide(
         subtitle = "Write code in CuP"
     ) {
         Column {
-            if (step == 0) {
-                CodeInPaneWithTitle(
-                    title = "This is the way to write code in CuP",
-                    code = sourceCode
-                )
-                Spacer(Modifier.height(20.dp))
+            AnimatedVisibility(step >= 1) {
+                Column {
+                    CodeInPaneWithTitle(
+                        title = "This is the way to write code in CuP",
+                        code = sourceCode
+                    )
+                    Spacer(Modifier.height(12.dp))
+                }
             }
-            if (step >= 1) {
-                Column(modifier = Modifier.weight(1f)) {
+            if (step >= 2) {
+                Column {
                     Text(text = "The output is this:", style = MaterialTheme.typography.bodyMedium)
                     Spacer(Modifier.height(8.dp))
                     Code(outputCode)

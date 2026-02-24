@@ -68,7 +68,7 @@ val sourceCodeMarkersCuP by Slide(
         """.trimIndent()
         }
         val outputCode = rememberSourceCode(language = "kotlin") {
-            val hello by marker(onlyShown(1, 3, 4))
+            val hello by marker(onlyShown(2, 4))
             val hey by marker(hidden(3))
             val goodbye by marker(highlighted(4))
             """
@@ -80,14 +80,16 @@ val sourceCodeMarkersCuP by Slide(
             """.trimIndent()
         }
         Column {
-            if (step == 0) {
-                CodeInPaneWithTitle(
-                    title = "This is the way to write code in CuP",
-                    code = sourceCode
-                )
-                Spacer(Modifier.height(20.dp))
-            }
             AnimatedVisibility(step >= 1) {
+                Column {
+                    CodeInPaneWithTitle(
+                        title = "This is the way to write code in CuP",
+                        code = sourceCode
+                    )
+                    Spacer(Modifier.height(12.dp))
+                }
+            }
+            AnimatedVisibility(step >= 2) {
                 Column {
                     Text(text = "The output is this:", style = MaterialTheme.typography.bodyMedium)
                     Spacer(Modifier.height(8.dp))

@@ -1,9 +1,12 @@
 package com.bcnkode.meetup.cup
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -13,8 +16,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import net.kodein.cup.Slide
 import net.kodein.cup.speaker.SpeakerNotes
+import org.kodein.emoji.Emoji
+import org.kodein.emoji.smileys_emotion.heart.RedHeart
 
 val finishCuP by Slide(
     user = SpeakerNotes(
@@ -44,12 +52,28 @@ val finishCuP by Slide(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         var showGoodbye by remember { mutableStateOf(false) }
+        Spacer(Modifier.height(100.dp))
+        Text(
+            text = "https://github.com/BcnKode-Mobile-Kotlin/ErrorsAndCuP.git",
+            style = MaterialTheme.typography.bodyLarge,
+        )
+        Spacer(Modifier.height(12.dp))
         Button(onClick = { showGoodbye = !showGoodbye }) {
             Text(text = "Click here!", color = MaterialTheme.colorScheme.background)
         }
-        if (showGoodbye) {
-            Text("Thank you so much")
-            Text("Any questions?")
+        Spacer(Modifier.height(16.dp))
+        AnimatedVisibility(showGoodbye) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = "Thank you so much ${Emoji.RedHeart}",
+                    style = TextStyle(fontSize = 16.sp)
+                )
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = "Any questions?",
+                    style = TextStyle(fontSize = 16.sp)
+                )
+            }
         }
     }
 }
