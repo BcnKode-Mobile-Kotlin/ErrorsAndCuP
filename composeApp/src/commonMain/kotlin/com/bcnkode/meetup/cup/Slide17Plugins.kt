@@ -34,7 +34,7 @@ val pluginsCuP by Slide {
                 user = SpeakerNote("My private note")
             ) {
                 ...
-            »
+            }
         """.trimIndent()
     }
     TitleAndContentScaffold(

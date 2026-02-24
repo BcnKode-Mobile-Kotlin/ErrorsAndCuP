@@ -33,7 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
@@ -63,16 +62,17 @@ val advancedAnimationsCuP by Slide(
         title = "Advanced animations",
         subtitle = "Example: From image to Compose with AI"
     ) {
-        if (step == 0)
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center,
-        ){
-            Image(
-                painter = painterResource(Res.drawable.cmp_chart),
-                contentDescription = null,
-                modifier = Modifier
-            )
+        if (step == 0) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.cmp_chart),
+                    contentDescription = null,
+                    modifier = Modifier
+                )
+            }
         }
         AnimatedVisibility(
             visible = step > 0,
