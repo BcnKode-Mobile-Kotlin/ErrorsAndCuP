@@ -36,7 +36,3 @@ compose.desktop {
         }
     }
 }
-
-tasks.withType<Copy>().configureEach {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}

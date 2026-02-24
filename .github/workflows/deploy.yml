@@ -19,13 +19,13 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Build Compose Web
-        run: ./gradlew :composeApp:wasmJsBrowserDistribution
+      - name: Build CuP for GitHub Pages
+        run: ./gradlew distDoc
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./composeApp/build/dist/wasmJs/productionExecutable
+          path: ./doc
 
   deploy:
     environment:
