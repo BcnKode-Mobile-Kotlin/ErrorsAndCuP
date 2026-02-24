@@ -22,16 +22,16 @@ jobs:
       - name: Build Compose Web
         run: ./gradlew :composeApp:wasmJsBrowserDistribution
           
-          # 2. EL TRUCO: Inyectamos la ruta base en el HTML autogenerado
-          - name: Fix Base Path for GitHub Pages
-            run: |
-              sed -i 's|<head>|<head><base href="/ErrorsAndCuP/">|g' ./composeApp/build/dist/wasmJs/productionExecutable/index.html
+      # 2. EL TRUCO: Inyectamos la ruta base en el HTML autogenerado
+      - name: Fix Base Path for GitHub Pages
+        run: |
+          sed -i 's|<head>|<head><base href="/ErrorsAndCuP/">|g' ./composeApp/build/dist/wasmJs/productionExecutable/index.html
 
-          # 3. Subimos la carpeta final
-          - name: Upload artifact
-            uses: actions/upload-pages-artifact@v3
-            with:
-              path: ./composeApp/build/dist/wasmJs/productionExecutable
+      # 3. Subimos la carpeta final
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./composeApp/build/dist/wasmJs/productionExecutable
 
   deploy:
     environment:
