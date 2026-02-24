@@ -71,7 +71,7 @@ val advancedAnimationsCuP by Slide(
             Image(
                 painter = painterResource(Res.drawable.cmp_chart),
                 contentDescription = null,
-                modifier = Modifier.scale(1.5f)
+                modifier = Modifier
             )
         }
         AnimatedVisibility(
