@@ -48,11 +48,12 @@ fun ColumnScope.CodeInPaneWithTitle(
     title: String,
     code: SourceCode,
     modifier: Modifier = Modifier,
+    step: Int = 0,
 ) {
     Text(title, style = MaterialTheme.typography.bodyMedium)
     Spacer(Modifier.height(8.dp))
     Pane(modifier = modifier) {
-        Code(code)
+        Code(code, step = step)
     }
 }
 

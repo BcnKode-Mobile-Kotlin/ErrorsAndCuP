@@ -63,8 +63,8 @@ val customStyleCuP by Slide(
             AnimatedVisibility(step >= 2) {
                 Column {
                     CodeInPane(code = customStyleCode)
-                    Spacer(Modifier.height(8.dp))
-                    if (step >= 3) {
+                    Spacer(Modifier.height(16.dp))
+                    AnimatedVisibility(step >= 3) {
                         CodeInPane(code = textStyleCode, step = step)
                     }
                 }

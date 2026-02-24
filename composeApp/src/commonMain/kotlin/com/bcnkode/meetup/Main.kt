@@ -14,8 +14,13 @@ import com.bcnkode.meetup.cup.slidesCuP
 import com.bcnkode.meetup.cup.animatedContentCuP
 import com.bcnkode.meetup.cup.customStyleCuP
 import com.bcnkode.meetup.cup.introCuP
+import com.bcnkode.meetup.cup.pluginsCuP
 import com.bcnkode.meetup.cup.slidesIndexCuP
 import com.bcnkode.meetup.cup.styleCuP
+import com.bcnkode.meetup.cup.genericTransitionsCuP
+import com.bcnkode.meetup.cup.layoutsCuP
+import com.bcnkode.meetup.cup.sourceCodeCuP
+import com.bcnkode.meetup.cup.transitionsCuP
 import com.bcnkode.meetup.cup.whatIsCuP
 import com.bcnkode.meetup.errorhandling.arrowEitherErrorHandling
 import com.bcnkode.meetup.errorhandling.errorModelsErrorHandling
@@ -101,6 +106,11 @@ val slides = Slides(
     advancedAnimationsCuP,
     styleCuP,
     customStyleCuP,
+    genericTransitionsCuP,
+    transitionsCuP,
+    layoutsCuP,
+    sourceCodeCuP,
+    pluginsCuP,
 )
 
 val presentationSlides = Slides(
