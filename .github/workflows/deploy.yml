@@ -1,0 +1,47 @@
+name: Deploy Compose Web to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Cambia a master si es el nombre de tu rama
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17 # Ajusta la versión si usas Java 21 u otra
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build Compose Web
+        # Dependiendo de si usas Wasm o JS, el comando suele ser uno de estos.
+        # Si localmente compilas diferente, sustituye este comando:
+        run: ./gradlew :composeApp:wasmJsBrowserDistribution
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Aquí apuntamos exactamente a la carpeta que mencionaste
+          # Asegúrate de que la ruta final coincida con donde Compose deja tu index.html
+          path: ./composeApp/build/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
