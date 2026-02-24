@@ -1,12 +1,15 @@
 package com.bcnkode.meetup.cup
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -16,11 +19,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import meetup_cup.composeapp.generated.resources.Res
+import meetup_cup.composeapp.generated.resources.qr_code
 import net.kodein.cup.Slide
 import net.kodein.cup.speaker.SpeakerNotes
+import org.jetbrains.compose.resources.painterResource
 import org.kodein.emoji.Emoji
 import org.kodein.emoji.smileys_emotion.heart.RedHeart
 
@@ -51,8 +58,16 @@ val finishCuP by Slide(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        Spacer(Modifier.height(32.dp))
+        Image(
+            painter = painterResource(Res.drawable.qr_code),
+            contentDescription = null,
+            modifier = Modifier
+                .size(120.dp)
+                .clip(RoundedCornerShape(8.dp)),
+        )
         var showGoodbye by remember { mutableStateOf(false) }
-        Spacer(Modifier.height(100.dp))
+        Spacer(Modifier.height(32.dp))
         Text(
             text = "https://github.com/BcnKode-Mobile-Kotlin/ErrorsAndCuP.git",
             style = MaterialTheme.typography.bodyLarge,
