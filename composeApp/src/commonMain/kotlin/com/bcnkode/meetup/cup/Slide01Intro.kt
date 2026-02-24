@@ -47,7 +47,7 @@ val introCuP by Slide(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = styled { "Compose Ur Pres\n${+b}¡Slides in Kotlin!${-b}" },
+                text = styled { "Compose Ur Pres\n${+b}Slides in Kotlin!${-b}" },
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.SemiBold,
             )
